@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= tempNote.title %>
+                            </h5>
+                            <p class="card-text my-3">
+                                <%= tempNote.description %>
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    Created by <%= tempNote.author.username %>
+                                </small>
+                            </p>
+                            <% if(currentUser && tempNote.author.equals(currentUser._id)) { %>
+                            <a href="/notes/<%=tempNote._id%>/edit" class="card-link btn btn-success">Edit</a>
+                            <form class="d-inline" action="/notes/<%=tempNote._id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                            <% } %>
+                </div>
+                <div class="card-footer">
+                    <% if(Math.round((Date.now() - Date.parse(tempNote.dueDate)) / (1000*3600*24))> 0) {%>
+                        Due <%= Math.round((Date.now() - Date.parse(tempNote.dueDate)) / (1000*3600*24)) %> days ago
+                    <% } else if(Math.round((Date.now() - Date.parse(tempNote.dueDate)) / (1000*3600*24))==0) {%>
+                        Due today
+                    <% } else { %>
+                        Due in <%= Math.round((Date.parse(tempNote.dueDate) - Date.now()) / (1000*3600*24)) %> day(s)
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>

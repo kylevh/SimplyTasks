@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center mb-5">Create Note</h1>
+        <div class="col-md-6 offset-md-3">
+
+            <div class="card shadow">
+                <div class="card card-body">
+                    <form action="/notes" method="POST" novalidate class="validated-form">
+                        <div class=" mb-3">
+                            <label class="form-label" for="title">Title</label>
+                            <input class="form-control" type="text" id="title" name="note[title]" required>
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                Please include a title.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="description">Description</label>
+                            <textarea class="form-control" rows="3" type="text" id="description"
+                                name="note[description]"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="date">Due date</label>
+                            <input class="form-control" rows="3" type="datetime-local" id="date"
+                                name="note[dueDate]"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <button class="btn btn-success">Add Task</button>
+                        </div>
+                    </form>
+
+
+                    <a href="/notes">All Tasks</a>
+                </div>
+            </div>
+        </div>
+    </div>

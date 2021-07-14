@@ -1,0 +1,16 @@
+body {
+    height:100vh;
+}
+
+.cover-container {
+    max-width: 60vw;
+    width: 100vw;
+    height: 100vh;
+}
+
+.nav-link {
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255);
+    margin-left: 1rem;
+}
+
